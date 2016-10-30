@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body ng-app="myApp">
+        <!-- <boxButton></boxButton> -->
+        <box-button></box-button>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript">
+     var app = angular.module("myApp",[]);
+     app.directive("boxButton",[function () {
+         return {
+            template : '<input type="button" value="按钮" class="btn btn-lg btn-primary btn-block" />' 
+         }
+     }]);
+</script>

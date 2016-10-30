@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <!-- 这里我们用了两个ng-app,angular在页面中找到第一个后，就不会往下找 -->
+        <div ng-app="myApp1" ng-controller="app1Controller">
+            <input type="button" value="按钮1" ng-click="do1()" />
+        </div>
+        <div ng-app="myApp2" ng-controller="app2Controller">
+            <input type="button" value="按钮2" ng-click="do2()" />
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript">
+    var app1 = angular.module("myApp1",[]);
+    app1.controller("app1Controller",["$scope",function ($scope) {
+        $scope.do1 = function(){
+            console.log(1111);
+        }
+    }]);
+
+    var app2 = angular.module("myApp2",[]);
+    app2.controller("app2Controller",["$scope",function ($scope) {
+        $scope.do2 = function(){
+            console.log(2222);
+        }
+    }]);
+
+    //所以我们要手动让angular执行第几个模块
+    //这种写法不推荐
+    angular.bootstrap(document.querySelector('[ng-app="myApp2"]'),["myApp2"]);
+</script>

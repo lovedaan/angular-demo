@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body ng-app="myApp" ng-init="name='<h1>张三</h1>'">
+        <!-- 直接写到内容里，页面会有闪动，就是因为还没执行到angular，html把这个我们的内容当普通文本渲染 -->
+        <!-- <strong>{{name}}</strong> -->
+        <!-- 使用ng-bind-html指令就把我们要绑定的值是html，解析出来，但是要引用一个安全插件 -->
+        <strong ng-bind-html="name"></strong>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<!-- 这里注意，我们引用angular的插件，要手动写依赖这个模块，才能载入插件，因为angular默认是不依赖其他模块的 -->
+<script type="text/javascript">
+     angular.module("myApp",["ngSanitize"]);
+</script>

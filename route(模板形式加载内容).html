@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>路由模块</title>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+</head>
+<body ng-app="myApp">
+    <ul>
+        <li><a href="#/a">A</a></li>
+        <li><a href="#/b">B</a></li>
+        <li><a href="#/c">C</a></li>
+    </ul>
+    <div ng-view></div>
+</body>
+</html>
+<!-- 写成模板形式就不会加载新文件 -->
+<script id="a_tmp" type="text/ng-template">
+     <h1>{{title}}</h1>
+</script>
+<script type="text/javascript">
+     var app = angular.module("myApp",["ngRoute"]);
+     app.config(["$routeProvider",function ($routeProvider) {
+         $routeProvider
+         //这个地址可以匹配某一类的
+         ///students/:name
+         //比如students下面的每个名字,一定要有东西才能匹配
+         //students/:name? 后面则可以不跟东西
+         .when("/students/:name",{
+            controller : "studentsController",
+            templateUrl : "a_tmp"
+         })
+         .when("/a",{
+            controller : "aController",
+            templateUrl : "a_tmp"
+         })
+         .when("/b",{
+            controller : "bController",
+            templateUrl : "a_tmp"
+         })
+         .when("/c",{
+            controller : "cController",
+            templateUrl : "a_tmp"
+         })
+         .otherwise({
+            redirectTo : '/a'
+         });
+     }]);
+
+     app.controller("studentsController",["$scope","$routeParams",function ($scope,$routeParams) {
+         $scope.title = '这是'+$routeParams.name+'模块';
+     }]);
+
+     app.controller("aController",["$scope",function ($scope) {
+         $scope.title = '这是A模块';
+     }]);
+     app.controller("bController",["$scope",function ($scope) {
+         $scope.title = '这是B模块';
+     }]);
+     app.controller("cController",["$scope",function ($scope) {
+         $scope.title = '这是C模块';
+     }]);
+</script>

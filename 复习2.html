@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8" />
+    <title>复习angular</title>
+</head>
+<body>
+    <table ng-controller="demoController" border="1">
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" ng-model="user.username" /></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="" ng-model="user.password" id="" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="提交" ng-click="login()" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{message}}</td>
+        </tr>
+    </table>
+    <script type="text/javascript" src='bower_components/angular/angular.js'></script>
+    <script type="text/javascript">
+         var app = angular.module("myApp",[]);
+         app.controller("demoController",["$scope",function ($scope) {
+             $scope.user = {
+                username : '',
+                password : ''
+             };
+             $scope.login = function(){
+                console.log($scope.user);
+             }
+             $scope.message = '请输入用户名';
+
+             $scope.$watch("user.username",function (now,old) {
+                 if(now){
+                    if(now.length < 7){
+                        $scope.message = '输入用户名不合法';
+                    }else{
+                        $scope.message = '';
+                    }
+                 }else{
+                    $scope.message = '请输入用户名';
+                 }
+             });
+         }]);
+    </script>
+</body>
+</html>

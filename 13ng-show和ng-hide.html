@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .tips{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                line-height: 100vh;
+                text-align: center;
+                font-size: 50px;
+                color:#fff;
+            }
+            .hide{
+                display: none;
+                transition: all 1s ease 0s;
+            }
+        </style>    
+    </head>
+    <body ng-app="myApp" ng-controller="myController">
+        <h1>哈哈哈哈哈哈</h1>
+        <div class="tips" ng-show="loading">
+            loading.....
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript">
+     var app = angular.module("myApp",[]);
+     app.controller("myController",["$scope","$timeout",function ($scope,$timeout) {
+
+        $scope.loading = true;
+
+        $timeout(function () {
+            $scope.loading = false;
+        },2000);
+         
+     }]);
+</script>

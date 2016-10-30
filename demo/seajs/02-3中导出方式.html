@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="node_modules/seajs/dist/sea.js"></script>
+        <script type="text/javascript">
+             seajs.use("./exports.js",function (P) {
+                 var p1 = new P("张三",24);
+                 p1.show();
+                 console.log(P);
+             });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

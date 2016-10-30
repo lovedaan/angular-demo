@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>复习angular</title>
+</head>
+<body>
+    <div class="wrap" ng-app="myApp" ng-controller="demoController">
+        <input type="text" placeholder="请输入姓名" ng-model="user.name" />
+        <p>hello {{user.name}}</p>
+    </div>
+    <script type="text/javascript" src='bower_components/angular/angular.js'></script>
+    <script type="text/javascript">
+         var app = angular.module("myApp",[]);
+         app.controller("demoController",["$scope",function ($scope) {
+             $scope.user = {};
+             $scope.user.name = '张三';
+         }]);
+    </script>
+</body>
+</html>

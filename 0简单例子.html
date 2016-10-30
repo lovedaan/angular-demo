@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div ng-app="myApp" ng-controller="demoController">
+            <h1>angular数据双边绑定</h1>
+            <input type="text" placeholder="请输入姓名"  ng-model="user.name"/>
+            <p>hello <strong>{{user.name}}</strong></p>
+            <input type="button" value="点击" ng-click="show()" />
+        </div>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript">
+            var app = angular.module("myApp",[]);
+            app.controller("demoController",function($scope) {
+                // body...
+                $scope.user = {};
+                $scope.user.name = '张三';
+                $scope.show = function () {
+                    // body...
+                    console.log($scope.user.name);
+                }
+            }); 
+        </script>
+    </body>
+</html>

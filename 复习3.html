@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8" />
+    <title>复习angular</title>
+</head>
+<body>
+    <table ng-controller="demoController" border="1">
+        <tr>
+            <td>单价</td>
+            <td><input type="text" ng-model="shoping.price" /></td>
+        </tr>
+        <tr>
+            <td>数量</td>
+            <td><input type="text" name="" ng-model="shoping.num" id="" /></td>
+        </tr>
+        <tr>
+            <td>总价钱</td>
+            <td>{{sumPrice()}}</td>
+        </tr>
+    </table>
+    <script type="text/javascript" src='bower_components/angular/angular.js'></script>
+    <script type="text/javascript">
+         var app = angular.module("myApp",[]);
+         app.controller("demoController",["$scope",function ($scope) {
+             $scope.shoping = {
+                price : '10',
+                num : '0',
+                sum : "0"
+             };
+             $scope.sumPrice = function () {
+                 return $scope.shoping.price * $scope.shoping.num;
+             };
+             $scope.$watch("$scope.sumPrice",function (now,old) {
+                 
+             });
+             
+         }]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script type="text/javascript">
+    var url = 'https://www.baidu.com?id=12&age=13#name';
+    var aLink = document.createElement("a");
+    aLink.href = url;
+    var data = aLink.search.substr(1).split("&");
+    var json = {};
+    for(var i =0; i<data.length;i++){
+        var dataI = data[i].split("=");
+        json[dataI[0]] = dataI[1];
+    }
+    console.log(json);
+</script>

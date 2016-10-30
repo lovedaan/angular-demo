@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body ng-app="myApp">
+        <!-- ng-repeat指令会在数组中遍历，生成多个li -->
+        <ul ng-controller="ListController">
+            <li ng-repeat="item in data" data-id="{{item.id}}">
+                <span>{{$first?"开始":""}}</span>
+                <strong>{{item.name}}</strong>今年
+                <span>{{item.age}}岁</span>
+                <span>{{$last?"没有了":""}}</span>
+            </li>
+        </ul>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript">
+     var app = angular.module("myApp",[]);
+     app.controller("ListController",["$scope",function ($scope) {
+         $scope.data = [];
+         for(var i =0; i<10;i++){
+            //往数组里面添加一组数据
+            $scope.data[$scope.data.length] = {
+                id : i,
+                name : '赵四' + i,
+                age : 20+i
+            };
+         }
+     }]);
+</script>

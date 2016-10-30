@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    </head>
+    <body ng-app="myApp" ng-controller="myController" ng-cloak>
+        <img ng-src="{{imgsrc}}" alt="" />
+        <a ng-href="{{imgsrc}}">跳转链接</a>
+    </body>
+</html>
+<script type="text/javascript">
+     angular.module('myApp',[]).controller("myController",["$scope",function ($scope) {
+         $scope.imgsrc='1.jpg';
+     }]);
+</script>

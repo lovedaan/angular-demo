@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .red{
+                color: red;
+            }
+            .green{
+                color:green;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp">
+        <input type="text" ng-model="lastname" />
+        <ul ng-controller="listController">
+            <li ng-repeat="item in data track by $index" ng-class="{red:item.startsWith(lastname)}">{{item}}</li>
+        </ul>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript">
+     var app = angular.module("myApp",[]);
+     app.controller("listController",["$scope",function ($scope) {
+         $scope.data = ["张三","李四","王五","赵六","王五","赵六"];
+     }]);
+</script>

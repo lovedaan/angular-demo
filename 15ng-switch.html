@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-switch 指令</title>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+</head>
+<body ng-app>
+    <select name="" id="" ng-model="sel">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <div ng-switch="sel">
+        <div ng-switch-when="1">
+            您选择 了1
+        </div>
+        <div ng-switch-when="2">
+            您选择 了2
+        </div>
+        <div ng-switch-when="3">
+            您选择 了3
+        </div>
+        <div ng-switch-default>
+            您没有选择
+        </div>
+    </div>
+</body>
+</html>

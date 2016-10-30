@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>filter筛选器</title>
+</head>
+<body ng-app="app">
+    <div ng-controller="ListController">
+        <input type="text" ng-model="searchText" />
+        <!-- filter : searchText
+        filter : true全文检索关键字,我们如果想要某个字段是否符合我们的要求的，要写成对象的写法
+            filter : {completed : true}
+         -->
+        <ul>
+            <li ng-repeat="item in data | filter : { completed : true}">
+                <span>id是：{{item.id}}</span>
+                <span>姓名是：{{item.text}}</span>
+                <span>{{item.completed}}</span>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript">
+         angular.module("app",[])
+         .controller("ListController",["$scope",function ($scope) {
+             $scope.data = [
+                {id : 1, text : '吃饭', completed : false},
+                {id : 2, text : '睡觉', completed : true},
+                {id : 3, text : '打豆豆', completed : false},
+                {id : 4, text : '打豆豆1', completed : false},
+                {id : 5, text : '打豆豆2', completed : true},
+                {id : 6, text : '打豆豆3', completed : false},
+                {id : 6, text : '我是选择true/false', completed : false}
+            ];
+         }]);
+    </script>
+</body>
+</html>

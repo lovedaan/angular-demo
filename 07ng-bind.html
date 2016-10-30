@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body ng-app ng-init="name='<h1>张三</h1>'">
+        <!-- 直接写到内容里，页面会有闪动，就是因为还没执行到angular，html把这个我们的内容当普通文本渲染 -->
+        <!-- <strong>{{name}}</strong> -->
+        <!-- 使用ng-bind指令就不会，但是如果我们要绑定的值是html，那这个指令会原样输出 -->
+        <strong ng-bind="name"></strong>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>

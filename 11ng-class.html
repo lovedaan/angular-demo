@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .red{
+                background-color: red;
+            }
+            .green{
+                background-color:green;
+            }
+            #box{
+                width: 200px;
+                height: 200px;
+                transition: background-color 1s ease 0s;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp">
+        <select name="" id=""  ng-model="style">
+            <option value="red">红色</option>
+            <option value="green">绿色</option>
+        </select>
+        <!-- <div id="box" ng-class="style"></div> -->
+        <div id="box" ng-class="{red:style=='red',green:style == 'green'}"></div>
+    </body>
+</html>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript">
+     var app = angular.module("myApp",[]);
+</script>

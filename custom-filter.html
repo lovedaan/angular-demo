@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>自定义过滤器</title>
+</head>
+<body ng-app="app">
+    <div>
+        <h1>{{true | checkmark}}</h1>
+        <h1>{{true | checkmark : 2}}</h1>
+    </div>
+    <div>
+        <input type="text" placeholder="请输入你的体重" ng-model="weight" />
+        <p>你的体重是{{weight}}kg</p>
+        <p>你太 {{ weight | weight}}</p>
+    </div>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript">
+         angular.module("app",[])
+         .filter("checkmark",function () {
+             return function (input,style) {
+                 //input是必写参数，style是可选参数
+                 style = style || 1;
+                 switch(style){
+                    case 1:
+                        return input?'\u2713':'\u2718';
+                    case 2:
+                        return input?'\u2715':'\u2712';
+                 }
+             }
+         })
+         .filter("weight",function () {
+             return function (input) {
+                 if(input > 200){
+                    return '胖了';
+                 }
+                 else if(input < 100){
+                    return '瘦了';
+                 }
+             }
+         });
+    </script>
+</body>
+</html>

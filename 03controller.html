@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>用户注册</title>
+    </head>
+    <body>
+        <table border="1" ng-controller="demoController">
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" ng-model="user.username" /></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" ng-model="user.password" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="button" value="点击" ng-click="login()" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{message}}</td>
+            </tr>
+        </table>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript">
+            var app = angular.module("myApp",[]);
+            //控制器的作用：1.暴露初始值2.暴露行为
+            app.controller("demoController",["$scope",function($scope) {
+                $scope.user = {
+                    username : '',
+                    password : ''
+                };
+
+                //行为数据
+                $scope.login = function () {
+                    console.log($scope.user);
+                }
+
+                $scope.message = '请输入姓名';
+
+                //监测用户名输入变化
+                $scope.$watch("user.username",function (now,old) {
+                    /*console.log("now is " + now );
+                    console.log("old is " + old );*/
+                    if(now){
+                        if(now.length < 7){
+                            $scope.message = '请输入的格式不合法';
+                        }else{
+                            $scope.message = '';
+                        }
+                    }else{
+                        $scope.message = '请输入姓名';
+                    }
+                });
+                
+            }]); 
+        </script>
+    </body>
+</html>
